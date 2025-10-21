@@ -37,7 +37,7 @@ export function FileItem({file}: FileItemProps) {
     <>
       <li className=''>
         <button
-          onClick={() => openDialog(FileViewerDialogId)}
+          onClick={() => openDialog(`${FileViewerDialogId}-${file.id}`)}
           className='w-full h-full text-left border p-4 rounded bg-white hover:bg-blue-50 hover:border-blue-300 transition-all flex items-center gap-3'
         >
           <span className='text-2xl'>{getIcon()}</span>
@@ -47,8 +47,8 @@ export function FileItem({file}: FileItemProps) {
         </button>
       </li>
 
-      <dialog id={FileViewerDialogId}>
-        <FileViewer file={file} onClose={() => closeDialog(FileViewerDialogId)} />
+      <dialog id={`${FileViewerDialogId}-${file.id}`}>
+        <FileViewer file={file} onClose={() => closeDialog(`${FileViewerDialogId}-${file.id}`)} />
       </dialog>
     </>
   );
